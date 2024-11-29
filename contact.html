@@ -318,122 +318,164 @@
       </div>
     </div>
   </div>
+<!-- Map Section Start -->
+<style>
+  .location-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
-  <!-- map start  -->
-  <style>
+  .location-header {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #333;
+  }
 
-    .location-container {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 24px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+  .mapcontact-title {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+  }
 
+  .map-wrapper {
+    position: relative;
+    margin-top: 16px;
+    width: 100%;
+  }
+
+  .location-map {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    border: none;
+  }
+
+  .location-pin-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Ensures clicks go to the map */
+  }
+
+  .location-pin {
+    background-color: #f56565;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .address-details {
+    margin-top: 24px;
+    padding: 16px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+  }
+
+  .address-details p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  .address-details h4 {
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
     .location-header {
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 16px;
-      color: #333;
-    }
-
-    .map-wrapper {
-      position: relative;
-      margin-top: 16px;
-    }
-
-    .location-map {
-      width: 100%;
-      height: 400px;
-      border-radius: 8px;
-    }
-
-    .location-pin-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .location-pin {
-      background-color: #f56565;
-      border-radius: 50%;
-      width: 16px;
-      height: 16px;
-    }
-
-    .address-details {
-      margin-top: 24px;
-      padding: 24px;
-      background-color: #f3f4f6;
-      border-radius: 8px;
-      font-size: 1.125rem;
-      color: #333;
-      text-align: center;
-    }
-
-    .address-details p {
-      margin-top: 8px;
-      font-size: 1rem;
-      color: #4b5563;
-    }
-
-    .address-details h4 {
-      margin-bottom: 12px;
-      font-weight: 600;
-      color: #1f2937;
+      font-size: 1.25rem;
     }
 
     .mapcontact-title {
-      text-align: center;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #333;
-      margin-top: 20px;
+      font-size: 1.1rem;
     }
 
-  </style>
+    .location-map {
+      height: 250px;
+    }
 
-  <div class="location-container">
-    <h2 class="location-header">Our Location</h2>
-    
-    <!-- "MapContact" Title Above the Map -->
-    <div class="mapcontact-title">
-      <h3>MapContact</h3>
-    </div>
+    .address-details {
+      font-size: 0.9rem;
+      padding: 12px;
+    }
 
-    <div class="map-wrapper">
-      <!-- Google Maps iframe embedded with Delhi, India location -->
-      <iframe 
-        class="location-map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144004.5663775916!2d77.06869327693986!3d28.64480044015042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d039a25d91c63%3A0xf4c2cf6a830ad88!2sDelhi%2C%20India!5e0!3m2!1sen!2sus!4v1637551761514!5m2!1sen!2sus" 
-        allowfullscreen="" 
-        loading="lazy">
-      </iframe>
+    .address-details p {
+      font-size: 0.85rem;
+    }
+  }
 
-      <div class="location-pin-wrapper">
-        <div class="location-pin"></div>
-      </div>
-    </div>
+  @media (max-width: 480px) {
+    .location-map {
+      height: 200px;
+    }
 
-    <!-- Address Section -->
-    <div class="address-details">
-      <h4>Our Office Address</h4>
-      <p>
-        <strong>Hotel XYZ</strong><br>
-        123, ABC Street, Connaught Place<br>
-        New Delhi, India 110001<br>
-        Phone: +91 123 456 7890
-      </p>
+    .address-details {
+      font-size: 0.85rem;
+      padding: 10px;
+    }
+
+    .address-details p {
+      font-size: 0.8rem;
+    }
+  }
+</style>
+
+<div class="location-container">
+  <h2 class="location-header">Our Location</h2>
+
+  <!-- "MapContact" Title -->
+  <div class="mapcontact-title">
+    <h3>MapContact</h3>
+  </div>
+
+  <div class="map-wrapper">
+    <!-- Google Maps iframe -->
+    <iframe 
+      class="location-map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144004.5663775916!2d77.06869327693986!3d28.64480044015042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d039a25d91c63%3A0xf4c2cf6a830ad88!2sDelhi%2C%20India!5e0!3m2!1sen!2sus!4v1637551761514!5m2!1sen!2sus" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+
+    <div class="location-pin-wrapper">
+      <div class="location-pin"></div>
     </div>
   </div>
-  <!-- map end -->
+
+  <!-- Address Details -->
+  <div class="address-details">
+    <h4>Our Office Address</h4>
+    <p>
+      <strong>Hotel XYZ</strong><br>
+      123, ABC Street, Connaught Place<br>
+      New Delhi, India 110001<br>
+      Phone: +91 123 456 7890
+    </p>
+  </div>
+</div>
+<!-- Map Section End -->
+
 
    <!-- Footer Section start -->
    <style>

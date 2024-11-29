@@ -120,8 +120,8 @@
       /* Shifting the second image to the left side */
       .image-section img:last-child {
         position: relative; /* Reset the position */
-        left: -33px;
-        width: 80%;
+        left: -52px;
+        width: 72%;
         height: auto;
         margin-bottom: 16px;
       }
@@ -341,210 +341,211 @@
 
   <!-- filter room start -->
 
-  <div class="filtercontainer">
+<!-- Include GSAP and ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <!-- Filter Section -->
-    <style>
+<!-- Room Component Start -->
+<style>
+  .pg-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    bottom: 90px;
+  }
 
-      .filtercontainer {
-        display: flex;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        gap: 20px;
-      }
-      .filter-section {
-        flex: 0 0 25%;
-        background-color: #fff;
-        padding: 16px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-      .filter-section h2 {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 16px;
-        text-align: center;
-      }
-      .filter-section label {
-        display: block;
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 8px;
-      }
-      .filter-section select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-bottom: 16px;
-      }
-      .listing-section {
-        flex: 1;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-      .pg-card {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .pg-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-      .pg-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-      .pg-card-content {
-        padding: 16px;
-      }
-      .pg-card-content h3 {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 8px;
-      }
-      .pg-card-content p {
-        color: #666;
-        margin-bottom: 8px;
-      }
-      .pg-button-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .pg-price {
-        font-weight: bold;
-        font-size: 16px;
-        color: #C61300;
-        transition: color 0.3s ease;
-      }
-      .pg-price:hover {
-        color: #9f0d00;
-      }
-      .pg-button {
-        background-color: #C61300;
-        color: #fff;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-      .pg-button:hover {
-        background-color: #a11000;
-      }
-  
-      /* Media Query for Mobile Screens */
-      @media screen and (max-width: 768px) {
-        .container {
-          flex-direction: column;
-        }
-        .filter-section {
-          flex: 0 0 auto;
-          margin-bottom: 20px;
-        }
-        .listing-section {
-          grid-template-columns: 1fr; /* Single column for listings */
-        }
-      }
-    </style>
-    <div class="filter-section">
-      <h2>Filter</h2>
-      <form>
-        <label for="location">Location</label>
-        <select id="location">
-          <option value="">All Locations</option>
-          <option value="Dubai">Dubai</option>
-          <option value="New York">New York</option>
-          <option value="Paris">Paris</option>
-        </select>
+  .pg-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
-        <label for="priceRange">Price Range</label>
-        <select id="priceRange">
-          <option value="">All Prices</option>
-          <option value="low">Below $200</option>
-          <option value="mid">$200 - $400</option>
-          <option value="high">Above $400</option>
-        </select>
+  .pg-subtitle {
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
-        <label for="genderPreference">Gender Preference</label>
-        <select id="genderPreference">
-          <option value="">No Preference</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </form>
+  .pg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .pg-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* Initial state for animation */
+    transform: translateY(50px); /* Initial state for animation */
+  }
+
+  .pg-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .pg-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .pg-card-content {
+    padding: 16px;
+  }
+
+  .pg-card-content h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .pg-card-content p {
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  .pg-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pg-price {
+    font-weight: bold;
+    font-size: 16px;
+    color: #C61300;
+    transition: color 0.3s ease;
+  }
+
+  .pg-price:hover {
+    color: #9f0d00;
+  }
+
+  .pg-button {
+    background-color: #C61300;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .pg-button:hover {
+    background-color: #a11000;
+  }
+
+  .pg-view-all {
+    text-align: right;
+    margin-top: 20px;
+  }
+
+  .pg-view-all a {
+    color: #C61300;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .pg-view-all a:hover {
+    text-decoration: underline;
+    color: #9f0d00;
+  }
+
+  @media (max-width: 768px) {
+    .pg-container {
+      position: relative;
+      bottom: -4px;
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+</style>
+
+<div class="pg-container">
+  <h1 class="pg-header">Welcome to SHIVSHAKTI PG BOOKING –</h1>
+  <p class="pg-subtitle">Your Gateway to Quality and Comfort in PG Living</p>
+  <div class="pg-grid">
+    <!-- Room Cards -->
+    <div class="pg-card">
+      <img src="./assets/rooms/p1.jpg" alt="Royal Stay PG">
+      <div class="pg-card-content">
+        <h2>Royal Stay PG</h2>
+        <p>Type: Boys</p>
+        <p>Address: Vijaynagar, Indore</p>
+        <p>Floors: 3</p>
+        <div class="pg-button-container">
+          <div class="pg-price">Rent Start: ₹2500</div>
+          <button class="pg-button">Details</button>
+        </div>
+      </div>
     </div>
 
-    <!-- Listing Section -->
-    <div class="listing-section">
-      <!-- Room 1 -->
-      <div class="pg-card">
-        <img src="https://placehold.co/300x200" alt="Royal Stay PG">
-        <div class="pg-card-content">
-          <h3>Royal Stay PG</h3>
-          <p>Type: Boys</p>
-          <p>Address: Vijaynagar, Indore</p>
-          <p>Floors: 3</p>
-          <div class="pg-button-container">
-            <div class="pg-price">Rent Start: ₹2500</div>
-            <button class="pg-button">Details</button>
-          </div>
+    <!-- Repeat for Other PG Cards -->
+    <div class="pg-card">
+      <img src="./assets/rooms/p2.jpg" alt="Comfort Stay PG">
+      <div class="pg-card-content">
+        <h2>Comfort Stay PG</h2>
+        <p>Type: Girls</p>
+        <p>Address: Bhawarkua, Indore</p>
+        <p>Floors: 4</p>
+        <div class="pg-button-container">
+          <div class="pg-price">Rent Start: ₹3000</div>
+          <button class="pg-button">Details</button>
         </div>
       </div>
-
-      <!-- Room 2 -->
-      <div class="pg-card">
-        <img src="https://placehold.co/300x200" alt="Comfort Stay PG">
-        <div class="pg-card-content">
-          <h3>Comfort Stay PG</h3>
-          <p>Type: Girls</p>
-          <p>Address: Bhawarkua, Indore</p>
-          <p>Floors: 4</p>
-          <div class="pg-button-container">
-            <div class="pg-price">Rent Start: ₹3000</div>
-            <button class="pg-button">Details</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Room 3 -->
-      <div class="pg-card">
-        <img src="https://placehold.co/300x200" alt="Elite Stay PG">
-        <div class="pg-card-content">
-          <h3>Elite Stay PG</h3>
-          <p>Type: Co-ed</p>
-          <p>Address: Palasia, Indore</p>
-          <p>Floors: 2</p>
-          <div class="pg-button-container">
-            <div class="pg-price">Rent Start: ₹4000</div>
-            <button class="pg-button">Details</button>
-          </div>
-        </div>
-      </div>
-
-        <!-- Room 3 -->
-        <div class="pg-card">
-            <img src="https://placehold.co/300x200" alt="Elite Stay PG">
-            <div class="pg-card-content">
-              <h3>Elite Stay PG</h3>
-              <p>Type: Co-ed</p>
-              <p>Address: Palasia, Indore</p>
-              <p>Floors: 2</p>
-              <div class="pg-button-container">
-                <div class="pg-price">Rent Start: ₹4000</div>
-                <button class="pg-button">Details</button>
-              </div>
-            </div>
-          </div>
     </div>
+
+    <!-- Additional Cards -->
+    <div class="pg-card">
+      <img src="./assets/rooms/p3.jpg" alt="Elite Stay PG">
+      <div class="pg-card-content">
+        <h2>Elite Stay PG</h2>
+        <p>Type: Co-ed</p>
+        <p>Address: Palasia, Indore</p>
+        <p>Floors: 2</p>
+        <div class="pg-button-container">
+          <div class="pg-price">Rent Start: ₹4000</div>
+          <button class="pg-button">Details</button>
+        </div>
+      </div>
+    </div>
+    <!-- Add more cards as needed -->
   </div>
+
+ 
+</div>
+
+<script>
+  // Initialize GSAP ScrollTrigger animations
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate cards on scroll
+  gsap.utils.toArray(".pg-card").forEach((card) => {
+    gsap.fromTo(
+      card,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  });
+</script>
+<!-- Room Component End -->
+
 
   <!-- filter room end -->
 

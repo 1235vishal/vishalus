@@ -91,7 +91,7 @@
               background-color: #ffffff;
               flex-direction: column;
               width: 100%;
-              max-height: 0;
+              height: 200px;
               overflow: hidden;
               align-items: center;
               padding: 0;
@@ -401,66 +401,14 @@
         <!-- Right Box -->
         <div class="unique-right-box">
             <div class="unique-right-box-content">
-                <div class="unique-box">Box 1</div>
-                <div class="unique-box">Box 2</div>
-                <div class="unique-box">Box 3</div>
+                <div class="unique-box">Modern Student Housing</div>
+                <div class="unique-box">Co-living Professional</div>
+                <div class="unique-box">Manage Apartments</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- <script>
-    const uniqueImageContainer = document.querySelector('.unique-image-container');
-    const uniqueNavButtons = document.querySelectorAll('.unique-nav-button');
-    const uniqueText1 = document.getElementById('unique-text-1');
-    const uniqueText2 = document.getElementById('unique-text-2');
-    let uniqueCurrentIndex = 0;
-
-    const uniqueSlideTexts = [
-        { heading: "More Comfort, Less Commute with SHIVSHAKTI PG", paragraph: "Live close to your college or workspace" },
-        { heading: "Affordable and Secure PGs", paragraph: "Comfortable living spaces with 24/7 security" },
-        { heading: "Convenient and Accessible", paragraph: "Book your PG in just a few clicks" }
-    ];
-
-    function uniqueUpdateSlide() {
-        const offset = -(uniqueCurrentIndex * 100);
-        uniqueImageContainer.style.transform = `translateX(${offset}%)`;
-        uniqueNavButtons.forEach(button => button.classList.remove('active'));
-        uniqueNavButtons[uniqueCurrentIndex].classList.add('active');
-        uniqueText1.textContent = uniqueSlideTexts[uniqueCurrentIndex].heading;
-        uniqueText2.textContent = uniqueSlideTexts[uniqueCurrentIndex].paragraph;
-    }
-
-    uniqueNavButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            uniqueCurrentIndex = parseInt(button.dataset.slide);
-            uniqueUpdateSlide();
-        });
-    });
-
-    setInterval(() => {
-        uniqueCurrentIndex = (uniqueCurrentIndex + 1) % uniqueImageContainer.children.length;
-        uniqueUpdateSlide();
-    }, 3000);
-
-    uniqueUpdateSlide();
-
-    
-        gsap.fromTo(
-            uniqueText1,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-        );
-        gsap.fromTo(
-            uniqueText2,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.2 }
-        );
-
-        uniqueText1.textContent = uniqueSlideTexts[uniqueCurrentIndex].heading;
-        uniqueText2.textContent = uniqueSlideTexts[uniqueCurrentIndex].paragraph;
-    
-</script> -->
 
 
 
