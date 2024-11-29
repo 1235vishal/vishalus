@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room Comfort and Space</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .room-listing { /* The class name for this listing component */
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border-radius: 12px;
+      background-image: url('./assets/conatctbackgroudnimage.png'); /* Background image URL */
+      background-size: cover;
+      background-position: center;
+      height: 634px;
+    }
+
+    .content-section {
+      left: 87px;
+      top: 56px;
+      position: relative;
+      text-align: center; /* Centering text */
+      margin-bottom: 16px;
+    }
+
+    .content-section h2 {
+      font-size: 31px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .content-section p {
+      color: #6b7280;
+      font-size: 23px;
+    }
+
+    .image-section {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      margin-top: 16px;
+      width: 100%;
+      height: 440px; /* Adjusted to match the image size */
+    }
+
+    /* Position the first image to the right */
+    .image-section img:first-child {
+      position: absolute;
+      right: 0;
+      width: 270px;
+      height: 440px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    /* Position the second image to the left */
+    .image-section img:last-child {
+      position: absolute;
+      top: 71px;
+      left: 183px;
+      width: 360px;
+      height: 280px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .highlight {
+      color: #e53e3e; /* Primary color */
+    }
+
+    /* Mobile-first adjustments */
+    @media (max-width: 767px) {
+      .room-listing {
+        padding: 16px;
+        flex-direction: column;
+        background-image: url('./assets/conatctbackgroudnimage.png'); /* Background image URL */
+        background-size: cover;
+        background-position: center;
+        height: auto; /* Adjust for mobile */
+      }
+
+      .content-section {
+        left: 1px;
+        top: 56px;
+        position: relative;
+        text-align: center; /* Centering text */
+        margin-bottom: 16px;
+      }
+
+      .content-section h2 {
+        font-size: 24px;
+      }
+
+      .content-section p {
+        font-size: 18px;
+      }
+
+      .image-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-section img:first-child {
+        top: 96px;
+        left: 157px;
+        width: 58%;
+        height: auto;
+        margin-bottom: 16px;
+      }
+
+      /* Shifting the second image to the left side */
+      .image-section img:last-child {
+        position: relative; /* Reset the position */
+        left: -33px;
+        width: 80%;
+        height: auto;
+        margin-bottom: 16px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .room-listing {
+        flex-direction: row;
+      }
+
+      .content-section {
+        flex: 0.5;
+      }
+
+      .image-section {
+        flex: 0.5;
+      }
+
+      .image-section img:first-child {
+        width: 270px;
+        height: 440px;
+        margin-right: 16px;
+      }
+
+      .image-section img:last-child {
+        width: 360px;
+        height: 280px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .content-section h2 {
+        font-size: 36px;
+      }
+
+      .content-section p {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- nav start now -->
+      <style>
+        /* Navigation bar styling  start */
+        nav {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding: 0px;
+         background-color: #ffffff;
+         position: relative;
+         bottom: 15px;
+         z-index: 10;
+       }
+   
+       /* Logo and text styling */
+       .logo {
+         display: flex;
+         align-items: center;
+        position: relative;
+        left: 91px;
+       }
+       
+       .logo img {
+         margin-right: 8px;
+         width: 90px;
+         height: auto;
+       }
+   
+       .logo span {
+         font-size: 1.125rem;
+         color: #e53e3e;
+         font-weight: bold;
+       }
+   
+       /* Navigation links */
+       .nav-links {
+         display: flex;
+         gap: 24px;
+         transition: max-height 0.5s ease;
+         right: 123px;
+     position: relative;
+       }
+   
+       .nav-links a {
+         color: #4a5568;
+         text-decoration: none;
+         font-size: 1rem;
+         font-weight: bold;
+         transition: color 0.3s;
+       }
+   
+       .nav-links a:hover {
+         color: #718096;
+       }
+   
+       .nav-links .home {
+         color: #e53e3e;
+       }
+   
+       .nav-links .home:hover {
+         color: #c53030;
+       }
+   
+       /* Toggle button styling */
+       .toggle-button {
+         display: none;
+         flex-direction: column;
+         cursor: pointer;
+         gap: 4px;
+       }
+   
+       .toggle-button span {
+         width: 25px;
+         height: 3px;
+         background-color:#C61300;
+         position: relative;
+         left: -20px;
+       }
+   
+       /* Mobile responsive styling */
+       @media (max-width: 768px) {
+         .nav-links {
+           position: absolute;
+           top: 100%;
+           right: 0;
+           background-color: #ffffff;
+           flex-direction: column;
+           width: 100%;
+           max-height: 0;
+           overflow: hidden;
+           align-items: center;
+           padding: 0;
+         }
+  
+         .logo {
+           display: flex;
+           align-items: center;
+          position: relative;
+          left: -3px;
+         }
+   
+         .nav-links.show {
+           max-height: 300px; /* Adjust for animation */
+         }
+   
+         .toggle-button {
+           display: flex;
+         }
+       }
+                  /* Navigation bar styling  end */
+                  
+  
+  </style>
+  <nav>
+    <div class="logo">
+      <a href="./main.html"><img aria-hidden="true" alt="logo" src="./assets/0-Photoroom.png" /></a>  
+    </div>
+    <div class="toggle-button" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
+      <a href="./main.html" class="home">Home</a>
+      <a href="./about.html">About</a>
+      <a href="./listing.html">Listings</a>
+      <a href="./contact.html">Contact</a>
+      <a href="#">Login / Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- GSAP Animation Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  <script>
+    // GSAP Animation for Navbar on Page Load
+    gsap.from("nav", { duration: 1, y: -50, opacity: 0, ease: "power4.out" });
+    gsap.from(".nav-links a", {
+      duration: 1,
+      x: -30,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power2.out"
+    });
+
+    // Toggle Menu Function for Mobile View
+    function toggleMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      navLinks.classList.toggle("show");
+      
+      // Animate the links when they appear on mobile
+      if (navLinks.classList.contains("show")) {
+        gsap.fromTo(".nav-links a", { opacity: 0, x: -20 }, { opacity: 1, x: 0, stagger: 0.2, duration: 0.5 });
+      }
+    }
+  </script>
+  
+    <!-- nav end now  -->
+
+  <!-- Room Listing Component Start -->
+  <div class="room-listing"> <!-- This is the container with the class "room-listing" -->
+    <div class="content-section">
+      <h2>Step into a Room Designed for <span class="highlight">Comfort and Space</span></h2>
+      <p>
+        Your belongings will have their own place, so you never have to worry about overcrowded spaces. At SHIVSHAKTI PG BOOKING, we ensure that your room is spacious enough for all your essentials—and even those little touches that make it feel like home. Whether it’s your clothes, bag, or a cherished photo, everything will have room to settle in comfortably.
+      </p>
+    </div>
+    <div class="image-section">
+      <img src="./assets/listing/image1.png" alt="Room Image 1">
+      <img src="./assets/listing/image2.png" alt="Room Image 2">
+    </div>
+  </div>
+  <!-- Room Listing Component End -->
+
+
+  <!-- filter room start -->
+
+  <div class="filtercontainer">
+
+    <!-- Filter Section -->
+    <style>
+
+      .filtercontainer {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 20px;
+      }
+      .filter-section {
+        flex: 0 0 25%;
+        background-color: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .filter-section h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      .filter-section label {
+        display: block;
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 8px;
+      }
+      .filter-section select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 16px;
+      }
+      .listing-section {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .pg-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .pg-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      .pg-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .pg-card-content {
+        padding: 16px;
+      }
+      .pg-card-content h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .pg-card-content p {
+        color: #666;
+        margin-bottom: 8px;
+      }
+      .pg-button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .pg-price {
+        font-weight: bold;
+        font-size: 16px;
+        color: #C61300;
+        transition: color 0.3s ease;
+      }
+      .pg-price:hover {
+        color: #9f0d00;
+      }
+      .pg-button {
+        background-color: #C61300;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .pg-button:hover {
+        background-color: #a11000;
+      }
+  
+      /* Media Query for Mobile Screens */
+      @media screen and (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        .filter-section {
+          flex: 0 0 auto;
+          margin-bottom: 20px;
+        }
+        .listing-section {
+          grid-template-columns: 1fr; /* Single column for listings */
+        }
+      }
+    </style>
+    <div class="filter-section">
+      <h2>Filter</h2>
+      <form>
+        <label for="location">Location</label>
+        <select id="location">
+          <option value="">All Locations</option>
+          <option value="Dubai">Dubai</option>
+          <option value="New York">New York</option>
+          <option value="Paris">Paris</option>
+        </select>
+
+        <label for="priceRange">Price Range</label>
+        <select id="priceRange">
+          <option value="">All Prices</option>
+          <option value="low">Below $200</option>
+          <option value="mid">$200 - $400</option>
+          <option value="high">Above $400</option>
+        </select>
+
+        <label for="genderPreference">Gender Preference</label>
+        <select id="genderPreference">
+          <option value="">No Preference</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </form>
+    </div>
+
+    <!-- Listing Section -->
+    <div class="listing-section">
+      <!-- Room 1 -->
+      <div class="pg-card">
+        <img src="https://placehold.co/300x200" alt="Royal Stay PG">
+        <div class="pg-card-content">
+          <h3>Royal Stay PG</h3>
+          <p>Type: Boys</p>
+          <p>Address: Vijaynagar, Indore</p>
+          <p>Floors: 3</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹2500</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 2 -->
+      <div class="pg-card">
+        <img src="https://placehold.co/300x200" alt="Comfort Stay PG">
+        <div class="pg-card-content">
+          <h3>Comfort Stay PG</h3>
+          <p>Type: Girls</p>
+          <p>Address: Bhawarkua, Indore</p>
+          <p>Floors: 4</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹3000</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 3 -->
+      <div class="pg-card">
+        <img src="https://placehold.co/300x200" alt="Elite Stay PG">
+        <div class="pg-card-content">
+          <h3>Elite Stay PG</h3>
+          <p>Type: Co-ed</p>
+          <p>Address: Palasia, Indore</p>
+          <p>Floors: 2</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹4000</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+
+        <!-- Room 3 -->
+        <div class="pg-card">
+            <img src="https://placehold.co/300x200" alt="Elite Stay PG">
+            <div class="pg-card-content">
+              <h3>Elite Stay PG</h3>
+              <p>Type: Co-ed</p>
+              <p>Address: Palasia, Indore</p>
+              <p>Floors: 2</p>
+              <div class="pg-button-container">
+                <div class="pg-price">Rent Start: ₹4000</div>
+                <button class="pg-button">Details</button>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+
+  <!-- filter room end -->
+
+      <!-- Footer Section start -->
+      <style>
+        /* General Styling */
+   
+        footer {
+          background-color: #ffffff;  /* White background */
+          color: #000000;  /* Black text */
+          padding: 40px 20px;
+          margin-top: 20px;
+        }
+    
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+    
+        .logo-section, .nav-section, .social-section, .contact-section {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin-bottom: 20px;
+        }
+    
+        .footer-logo {
+          width: 120px;
+          height: auto;
+          margin-bottom: 10px;
+        }
+    
+        .nav-section a {
+          text-decoration: none;
+          color: #000000;  /* Black text color for links */
+          margin: 5px 0;
+          transition: color 0.3s;
+        }
+    
+        .nav-section a:hover {
+          color: #555;  /* Slightly lighter black when hovering */
+        }
+    
+        /* Social Media Icons */
+        .social-icons a {
+          color: #000000;  /* Black icons */
+          margin: 5px;
+          text-decoration: none;
+          font-size: 24px;
+          transition: color 0.3s;
+        }
+    
+        .social-icons a:hover {
+          color: #555;  /* Slightly lighter black when hovering */
+        }
+    
+        /* Footer text styling */
+        .footer-text {
+          text-align: center;
+          font-size: 14px;
+          margin-top: 20px;
+          color: #000000;  /* Black footer text */
+        }
+    
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+          .container {
+            flex-direction: column;
+            align-items: center;
+          }
+    
+          .nav-section, .social-section, .contact-section {
+            align-items: center;
+          }
+    
+          .social-icons {
+            margin-top: 10px;
+          }
+        }
+    
+        @media (max-width: 480px) {
+          footer {
+            bottom: 92px;
+          position: relative;
+            padding: 20px 10px;
+          }
+    
+          .footer-logo {
+            width: 100px;
+            height: 132px;
+            width: 137px;
+            left: 14px;
+          }
+    
+          .footer-text {
+            font-size: 12px;
+          }
+    
+          .nav-section a {
+            font-size: 12px;
+          }
+    
+          .social-icons a {
+            font-size: 20px;
+          }
+        }
+      </style>
+      <footer>
+        <div class="container">
+          <!-- Logo Section -->
+          <div class="logo-section">
+            <img class="footer-logo" src="./assets/0-Photoroom.png" alt="Company Logo" />
+          </div>
+    
+          <!-- Navigation Links Section -->
+          <div class="nav-section">
+            <h3>Navigation</h3>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Listings</a>
+            <a href="#">Contact</a>
+          </div>
+    
+          <!-- Contact Information Section -->
+          <div class="contact-section">
+            <h3>Contact Information</h3>
+            <p>Email: contact@yourcompany.com</p>
+            <p>Phone: +123 456 7890</p>
+          </div>
+    
+          <!-- Social Media Section -->
+          <div class="social-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="https://facebook.com" target="_blank" title="Facebook">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="https://twitter.com" target="_blank" title="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://instagram.com" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Footer Text Section -->
+        <div class="footer-text">
+          <p>Copyright © 2024 | All Rights Reserved | Sitemap</p>
+          <p>Images shown are for representational purposes only. Amenities depicted may or may not form a part of that individual property.</p>
+        </div>
+      </footer>
+  
+          <!-- Footer Section end -->
+
+</body>
+</html>

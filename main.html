@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHIVSHAKTI pg house</title>
+ <style>
+           /* Navigation bar styling  start */
+           nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px;
+            background-color: #ffffff;
+            position: relative;
+            bottom: 15px;
+            z-index: 10;
+          }
+      
+          /* Logo and text styling */
+          .logo {
+            display: flex;
+            align-items: center;
+           position: relative;
+           left: 91px;
+          }
+          
+          .logo img {
+            margin-right: 8px;
+            width: 90px;
+            height: auto;
+          }
+      
+          .logo span {
+            font-size: 1.125rem;
+            color: #e53e3e;
+            font-weight: bold;
+          }
+      
+          /* Navigation links */
+          .nav-links {
+            display: flex;
+            gap: 24px;
+            transition: max-height 0.5s ease;
+            right: 123px;
+        position: relative;
+          }
+      
+          .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.3s;
+          }
+      
+          .nav-links a:hover {
+            color: #718096;
+          }
+      
+          .nav-links .home {
+            color: #e53e3e;
+          }
+      
+          .nav-links .home:hover {
+            color: #c53030;
+          }
+      
+          /* Toggle button styling */
+          .toggle-button {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+          }
+      
+          .toggle-button span {
+            width: 25px;
+            height: 3px;
+            background-color:#C61300;
+            position: relative;
+            left: -20px;
+          }
+      
+          /* Mobile responsive styling */
+          @media (max-width: 768px) {
+            .nav-links {
+              position: absolute;
+              top: 100%;
+              right: 0;
+              background-color: #ffffff;
+              flex-direction: column;
+              width: 100%;
+              max-height: 0;
+              overflow: hidden;
+              align-items: center;
+              padding: 0;
+            }
+
+            .logo {
+              display: flex;
+              align-items: center;
+             position: relative;
+             left: -3px;
+            }
+      
+            .nav-links.show {
+              max-height: 300px; /* Adjust for animation */
+            }
+      
+            .toggle-button {
+              display: flex;
+            }
+          }
+                     /* Navigation bar styling  end */
+                     
+
+ </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+    <a href="./main.html"><img aria-hidden="true" alt="logo" src="./assets/0-Photoroom.png" /></a>  
+    </div>
+    <div class="toggle-button" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
+      <a href="./main.html" class="home">Home</a>
+      <a href="./about.html">About</a>
+      <a href="./listing.html">Listings</a>
+      <a href="./contact.html">Contact</a>
+      <a href="#">Login / Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- GSAP Animation Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  <script>
+    // GSAP Animation for Navbar on Page Load
+    gsap.from("nav", { duration: 1, y: -50, opacity: 0, ease: "power4.out" });
+    gsap.from(".nav-links a", {
+      duration: 1,
+      x: -30,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power2.out"
+    });
+
+    // Toggle Menu Function for Mobile View
+    function toggleMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      navLinks.classList.toggle("show");
+      
+      // Animate the links when they appear on mobile
+      if (navLinks.classList.contains("show")) {
+        gsap.fromTo(".nav-links a", { opacity: 0, x: -20 }, { opacity: 1, x: 0, stagger: 0.2, duration: 0.5 });
+      }
+    }
+  </script>
+
+
+  <!-- hero section start -->
+  <style>
+    /* Reset default styles */
+  
+
+    /* Body and general styles */
+    body {
+      max-width: 100%;
+    overflow-x: hidden;
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+    }
+
+    /* Hero Section */
+    .unique-hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #ffffff;
+        padding: 20px;
+        position: relative;
+        bottom: 31px;
+    }
+
+    /* Container for Left and Right Boxes */
+    .unique-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        width: 1277px;
+    }
+
+    /* Left Box */
+    .unique-left-box {
+        width: 847px;
+        height: 550px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    /* Text content above the image */
+    .unique-content {
+        color: #232728;
+        font-size: 34px;
+        text-align: center;
+        z-index: 2;
+        position:relative;
+        top: 90px; 
+        padding: 0 20px;
+        border-radius: 5px;
+    }
+
+    /* Common style for all text elements */
+    .unique-text-content {
+        color: #232728;
+        font-size: 34px;
+        text-align: left;
+        padding: 10px;
+        margin: 10px 0;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .unique-text-content h2 {
+        font-size: 64px;
+        font-weight: bold;
+    }
+
+    .unique-text-content p {
+        font-size: 30px;
+        font-weight: normal;
+    }
+
+    /* Inner Box inside Left Box */
+    .unique-inner-box {
+        width: 60%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    /* Make images cover the full inner box area */
+    .unique-image-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+    }
+
+    .unique-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Small point navigation buttons */
+    .unique-nav-buttons {
+        position: absolute;
+        bottom: 10px; 
+        left: 10px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .unique-nav-button {
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .unique-nav-button.active {
+        background-color: #2196F3;
+    }
+
+    /* Right Box Content */
+    .unique-right-box-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        height: calc(650px - 40px);
+        overflow: hidden;
+    }
+
+    /* Individual Box inside Right Box */
+    .unique-box {
+        width: 430px;
+        height: 170px;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .unique-box:nth-child(1) {
+      background-image: linear-gradient(to right, rgba(235, 13, 13, 0.9), rgba(241, 239, 239, 0.154)),
+                        url('./assets/hero/rigthboxhero1.jpeg');
+  }
+  .unique-box:nth-child(2) {
+      background-image: linear-gradient(to right, rgba(235, 13, 13, 0.9), rgba(241, 239, 239, 0.154)),
+                        url('./assets/hero/rightboxhero2.jpeg');
+  }
+  .unique-box:nth-child(3) {
+      background-image: linear-gradient(to right, rgba(235, 13, 13, 0.9), rgba(241, 239, 239, 0.154)),
+                        url('./assets/hero/rightboxhero3.jpeg');
+  }
+
+
+  
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+        .unique-container {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .unique-left-box {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+
+        .unique-right-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .unique-inner-box {
+            width: 100%;
+        }
+
+        .unique-box {
+            width: 100%;
+            height: 160px;
+            padding: 20px;
+        }
+
+        .unique-text-content h2 {
+            font-size: 28px;
+        }
+
+        .unique-text-content p {
+            font-size: 18px;
+        }
+    }
+</style>
+<section class="unique-hero">
+    <div class="unique-container">
+        <!-- Left Box -->
+        <div class="unique-left-box">
+            <div class="unique-content">
+                <div class="unique-text-content">
+                    <h2 id="unique-text-1">More Comfort, Less Commute with SHIVSHAKTI PG</h2>
+                    <p id="unique-text-2">Live close to your college or workspace</p>
+                </div>
+            </div>
+
+            <div class="unique-inner-box">
+                <div class="unique-image-container">
+                    <img src="./assets/hero/leftherobox1.jpeg" alt="Image 1">
+                    <img src="./assets/hero/leftherobox2.jpeg" alt="Image 2">
+                    <img src="./assets/hero/leftherobox3.jpeg" alt="Image 3">
+                </div>
+            </div>
+
+            <div class="unique-nav-buttons">
+                <div class="unique-nav-button" data-slide="0"></div>
+                <div class="unique-nav-button" data-slide="1"></div>
+                <div class="unique-nav-button" data-slide="2"></div>
+            </div>
+        </div>
+
+        <!-- Right Box -->
+        <div class="unique-right-box">
+            <div class="unique-right-box-content">
+                <div class="unique-box">Box 1</div>
+                <div class="unique-box">Box 2</div>
+                <div class="unique-box">Box 3</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <script>
+    const uniqueImageContainer = document.querySelector('.unique-image-container');
+    const uniqueNavButtons = document.querySelectorAll('.unique-nav-button');
+    const uniqueText1 = document.getElementById('unique-text-1');
+    const uniqueText2 = document.getElementById('unique-text-2');
+    let uniqueCurrentIndex = 0;
+
+    const uniqueSlideTexts = [
+        { heading: "More Comfort, Less Commute with SHIVSHAKTI PG", paragraph: "Live close to your college or workspace" },
+        { heading: "Affordable and Secure PGs", paragraph: "Comfortable living spaces with 24/7 security" },
+        { heading: "Convenient and Accessible", paragraph: "Book your PG in just a few clicks" }
+    ];
+
+    function uniqueUpdateSlide() {
+        const offset = -(uniqueCurrentIndex * 100);
+        uniqueImageContainer.style.transform = `translateX(${offset}%)`;
+        uniqueNavButtons.forEach(button => button.classList.remove('active'));
+        uniqueNavButtons[uniqueCurrentIndex].classList.add('active');
+        uniqueText1.textContent = uniqueSlideTexts[uniqueCurrentIndex].heading;
+        uniqueText2.textContent = uniqueSlideTexts[uniqueCurrentIndex].paragraph;
+    }
+
+    uniqueNavButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            uniqueCurrentIndex = parseInt(button.dataset.slide);
+            uniqueUpdateSlide();
+        });
+    });
+
+    setInterval(() => {
+        uniqueCurrentIndex = (uniqueCurrentIndex + 1) % uniqueImageContainer.children.length;
+        uniqueUpdateSlide();
+    }, 3000);
+
+    uniqueUpdateSlide();
+
+    
+        gsap.fromTo(
+            uniqueText1,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+        );
+        gsap.fromTo(
+            uniqueText2,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.2 }
+        );
+
+        uniqueText1.textContent = uniqueSlideTexts[uniqueCurrentIndex].heading;
+        uniqueText2.textContent = uniqueSlideTexts[uniqueCurrentIndex].paragraph;
+    
+</script> -->
+
+
+
+<script>
+  // GSAP animation setup
+  const uniqueImageContainer = document.querySelector('.unique-image-container');
+  const uniqueNavButtons = document.querySelectorAll('.unique-nav-button');
+  const uniqueText1 = document.getElementById('unique-text-1');
+  const uniqueText2 = document.getElementById('unique-text-2');
+  let uniqueCurrentIndex = 0;
+
+  const uniqueSlideTexts = [
+      { heading: "More Comfort, Less Commute with SHIVSHAKTI PG", paragraph: "Live close to your college or workspace" },
+      { heading: "Affordable and Secure PGs", paragraph: "Comfortable living spaces with 24/7 security" },
+      { heading: "Convenient and Accessible", paragraph: "Book your PG in just a few clicks" }
+  ];
+
+  function uniqueUpdateSlide() {
+      const offset = -(uniqueCurrentIndex * 100);
+      gsap.to(uniqueImageContainer, { xPercent: offset, duration: 0, ease: "power2.out" });
+
+      uniqueNavButtons.forEach(button => button.classList.remove('active'));
+      uniqueNavButtons[uniqueCurrentIndex].classList.add('active');
+
+      gsap.fromTo(
+          uniqueText1,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+      );
+      gsap.fromTo(
+          uniqueText2,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.2 }
+      );
+
+      uniqueText1.textContent = uniqueSlideTexts[uniqueCurrentIndex].heading;
+      uniqueText2.textContent = uniqueSlideTexts[uniqueCurrentIndex].paragraph;
+  }
+
+  uniqueNavButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          uniqueCurrentIndex = parseInt(button.dataset.slide);
+          uniqueUpdateSlide();
+      });
+  });
+
+  setInterval(() => {
+      uniqueCurrentIndex = (uniqueCurrentIndex + 1) % uniqueImageContainer.children.length;
+      uniqueUpdateSlide();
+  }, 3000);
+
+  // Initial update
+  uniqueUpdateSlide();
+</script>
+
+  <!-- hero sectio end -->
+
+
+  <!--  Properties Info start -->
+  <style>
+    /* Root styles for colors and variables */
+    :root {
+        --background: #ffffff;
+        --primary: #dc2626;
+        --primary-foreground: #fee2e2;
+        --border-color: #e0e0e0;
+    }
+
+
+
+    /* Container styling */
+    .info-container {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        gap: 251px;
+        padding: 0px;
+        background-color: var(--background);
+        opacity: 0; /* Initially hidden for animation */
+        position: relative;
+        bottom: 117px;
+    }
+
+    /* Individual box styling */
+    .info-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+        border: 1px solid var(--border-color);
+        padding: 34.81px 52.7px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(50px); /* Start position for animation */
+        opacity: 0; /* Initially hidden for animation */
+    }
+
+    .info-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .number {
+        color: #232728;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .numtext {
+        color: #908c8c;
+        font-size: 0.9rem;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+        .info-container {
+           position: relative;
+           bottom: 2px;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .info-box {
+            gap: 5px;
+            padding: 20px 30px;
+        }
+
+        .info-icon {
+            width: 30px;
+            height: 30px;
+        }
+    }
+</style>
+  <!-- Container for info boxes -->
+<div class="pich">
+  <div class="info-container">
+    <!-- Box 1 -->
+    <div class="info-box">
+        <img 
+            class="info-icon" 
+            alt="cities-icon" 
+            src="./assets/Properties Info/Component 1.png" 
+        />
+        <span class="number">24+</span>
+        <span class="numtext">Cities</span>
+    </div>
+    <!-- Box 2 -->
+    <div class="info-box">
+        <img 
+            class="info-icon" 
+            alt="properties-icon" 
+            src="./assets/Properties Info/Component 2.png" 
+        />
+        <span class="number">445+</span>
+        <span class="numtext">PG</span>
+    </div>
+    <!-- Box 3 -->
+    <div class="info-box">
+        <img 
+            class="info-icon" 
+            alt="rooms-icon" 
+            src="./assets/Properties Info/Component 3.png" 
+        />
+        <span class="number">70,000+</span>
+        <span class="numtext">Rooms</span>
+    </div>
+</div>
+
+<!-- Include GSAP and ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+    // GSAP Animation for the container
+    gsap.fromTo(".info-container", 
+        { opacity: 0, y: 50 }, 
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    );
+
+    // GSAP Animation for each info-box
+    gsap.utils.toArray(".info-box").forEach((box, index) => {
+        gsap.fromTo(box, 
+            { opacity: 0, y: 50 }, 
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 1, 
+                delay: index * 0.2, 
+                ease: "power2.out", 
+                scrollTrigger: {
+                    trigger: box,
+                    start: "top 80%", // Animation triggers when the box is 80% visible
+                    toggleActions: "play none none none"
+                }
+            }
+        );
+    });
+</script>
+</div>
+
+  <!--  Properties Info end  -->
+
+  <!-- room component start -->
+  <style>
+    .pg-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      bottom: 90px;
+    }
+    .pg-header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .pg-subtitle {
+      margin-bottom: 20px;
+    }
+    .pg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .pg-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .pg-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adding hover effect for card */
+    }
+    .pg-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .pg-card-content {
+      padding: 16px;
+    }
+    .pg-card-content h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .pg-card-content p {
+      color: #666;
+      margin-bottom: 16px;
+    }
+    .pg-button-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pg-price {
+      font-weight: bold;
+      font-size: 16px;
+      color: #C61300;
+      transition: color 0.3s ease;
+    }
+    .pg-price:hover {
+      color: #9f0d00; /* Darker shade on hover for Rent price */
+    }
+    .pg-button {
+      background-color: #C61300;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .pg-button:hover {
+      background-color: #a11000; /* Darker shade for hover effect */
+    }
+    .pg-view-all {
+      text-align: right;
+      margin-top: 20px;
+    }
+    .pg-view-all a {
+      color: #C61300;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .pg-view-all a:hover {
+      text-decoration: underline;
+      color: #9f0d00; /* Darker shade for "View All" link on hover */
+    }
+
+    @media (max-width: 768px) {
+      .pg-container {
+         position: relative;
+         bottom: -4px;
+          flex-direction: row;
+          gap: 20px;
+      }
+    }
+  </style>
+  <div class="pg-container">
+    <h1 class="pg-header">Welcome to SHIVSHAKTI PG BOOKING –</h1>
+    <p class="pg-subtitle">Your Gateway to Quality and Comfort in PG Living</p>
+    <div class="pg-grid">
+      <!-- PG 1 -->
+      <div class="pg-card">
+        <img src="./assets/rooms/_MG_5307.jpg" alt="Royal Stay PG">
+        <div class="pg-card-content">
+          <h2>Royal Stay PG</h2>
+          <p>Type: Boys</p>
+          <p>Address: Vijaynagar, Indore</p>
+          <p>Floors: 3</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹2500</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PG 2 -->
+      <div class="pg-card">
+        <img src="./assets/rooms/aruna-ladies-and-gents-pg-services-hadapsar-pune-paying-guest-accommodation-for-men-sx1vp.jpg" alt="Comfort Stay PG">
+        <div class="pg-card-content">
+          <h2>Comfort Stay PG</h2>
+          <p>Type: Girls</p>
+          <p>Address: Bhawarkua, Indore</p>
+          <p>Floors: 4</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹3000</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PG 3 -->
+      <div class="pg-card">
+        <img src="./assets/rooms/jpeg_optimizer_23__9_.jpg" alt="Elite Stay PG">
+        <div class="pg-card-content">
+          <h2>Elite Stay PG</h2>
+          <p>Type: Co-ed</p>
+          <p>Address: Palasia, Indore</p>
+          <p>Floors: 2</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹4000</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PG 4 -->
+      <div class="pg-card">
+        <img src="./assets/rooms/jpeg_optimizer_5___2024_07_10T195317.470.jpg" alt="Budget Stay PG">
+        <div class="pg-card-content">
+          <h2>Budget Stay PG</h2>
+          <p>Type: Boys</p>
+          <p>Address: Rajendra Nagar, Indore</p>
+          <p>Floors: 2</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹2000</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PG 5 -->
+      <div class="pg-card">
+        <img src="./assets/rooms/s4.jpg" alt="Modern Stay PG">
+        <div class="pg-card-content">
+          <h2>Modern Stay PG</h2>
+          <p>Type: Girls</p>
+          <p>Address: Bhanwarkuan, Indore</p>
+          <p>Floors: 4</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹3500</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PG 6 -->
+      <div class="pg-card">
+        <img src="./assets/rooms/shamliya-pg-for-boys-and-girls-ghatlodiya-ahmedabad-paying-guest-accommodations-for-boy-student-4v6mqrom4v.jpg" alt="Comfortable PG">
+        <div class="pg-card-content">
+          <h2>Comfortable Stay PG</h2>
+          <p>Type: Boys & Girls</p>
+          <p>Address: MG Road, Indore</p>
+          <p>Floors: 3</p>
+          <div class="pg-button-container">
+            <div class="pg-price">Rent Start: ₹2700</div>
+            <button class="pg-button">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg-view-all">
+      <a href="#">View All</a>
+    </div>
+  </div>
+  <!-- room component end  -->
+
+  <!-- compare box start -->
+
+  <style>
+    .comparebox-container {
+      position: relative;
+      bottom: 153px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+      background-color: #ffffff;
+    }
+    .how-it-works-heading {
+      position: relative;
+      bottom:110px ;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 40px 0;
+      color: #D74B3D;
+    }
+    .comparebox-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+      width: 250px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .comparebox-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .comparebox-card img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+    }
+    .comparebox-card h3 {
+      color: #D74B3D;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .comparebox-card p {
+      color: #757575;
+      font-size: 14px;
+    }
+    .dark-mode .comparebox-card {
+      background-color: #2C2C2C;
+      color: #EAEAEA;
+      border: 1px solid #555;
+    }
+    .dark-mode .comparebox-card h3 {
+      color: #E57373;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .comparebox-container {
+        position: relative;
+        bottom: 73px;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .how-it-works-heading {
+        position: relative;
+        bottom:36px ;
+      }
+    }
+  </style>
+
+    <!-- Heading Section -->
+    <h2 class="how-it-works-heading" >How It Works!</h2>
+  <div class="comparebox-container">
+    <div class="comparebox-card">
+      <img src="./assets/comparebox/Search.png" alt="search-icon">
+      <h3>Search</h3>
+      <p>Find the perfect PG in your preferred city and locality with our easy-to-use search tools.</p>
+    </div>
+    <div class="comparebox-card">
+      <img src="./assets//comparebox/compare.png" alt="compare-icon">
+      <h3>Compare</h3>
+      <p>View details, prices, and amenities to compare various PG options that suit your needs.</p>
+    </div>
+    <div class="comparebox-card">
+      <img src="./assets/comparebox/book.png" alt="book-icon">
+      <h3>Book</h3>
+      <p>Choose your PG and book instantly with secure payment options and instant confirmation.</p>
+    </div>
+  </div>
+
+  <!-- compare box end -->
+
+
+  <!-- testimonial start -->
+  <style>
+    .testimonial-container {
+      position: relative;
+      bottom: 47px;
+      max-width: 1024px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .testimonial-box {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hover Effect */
+    .testimonial-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial-box img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-box h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .testimonial-box h3 {
+      font-size: 18px;
+      font-weight: semi-bold;
+      margin-bottom: 8px;
+    }
+
+    .testimonial-box p {
+      font-size: 14px;
+      color: #757575;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-box .rating {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-box .rating span {
+      color: #FFD700; /* Yellow color for stars */
+      font-size: 20px;
+    }
+
+    .testimonial-box .italic {
+      font-style: italic;
+      color: #757575;
+    }
+
+    /* Additional spacing for the 'Testimonial' section */
+    .testimonial-container {
+      margin-bottom: 40px;
+    }
+
+  </style>
+  <div class="testimonial-container">
+    <!-- Testimonial Section -->
+    <div class="testimonial-section">
+      <div class="testimonial-box">
+        <h2>What does our customer say?</h2>
+        <div class="flex items-center mb-4">
+          <img class="w-16 h-16 rounded-full mr-4" src="./assets/handsome-businessman-suit-glasses-cross-arms-chest-look 1.png" alt="Customer photo" />
+          <div>
+            <h3>Josim Uddin</h3>
+            <p>IT Professional</p>
+            <div class="rating">
+              <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+          </div>
+        </div>
+        <p class="italic">“There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.”</p>
+      </div>
+    </div>
+  </div>
+  <!-- testimonoal end -->
+
+    <!-- Footer Section start -->
+    <style>
+      /* General Styling */
+ 
+      footer {
+        background-color: #ffffff;  /* White background */
+        color: #000000;  /* Black text */
+        padding: 40px 20px;
+        margin-top: 20px;
+      }
+  
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+  
+      .logo-section, .nav-section, .social-section, .contact-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+  
+      .footer-logo {
+        width: 120px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+  
+      .nav-section a {
+        text-decoration: none;
+        color: #000000;  /* Black text color for links */
+        margin: 5px 0;
+        transition: color 0.3s;
+      }
+  
+      .nav-section a:hover {
+        color: #555;  /* Slightly lighter black when hovering */
+      }
+  
+      /* Social Media Icons */
+      .social-icons a {
+        color: #000000;  /* Black icons */
+        margin: 5px;
+        text-decoration: none;
+        font-size: 24px;
+        transition: color 0.3s;
+      }
+  
+      .social-icons a:hover {
+        color: #555;  /* Slightly lighter black when hovering */
+      }
+  
+      /* Footer text styling */
+      .footer-text {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 20px;
+        color: #000000;  /* Black footer text */
+      }
+  
+      /* Media Queries for Responsiveness */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          align-items: center;
+        }
+  
+        .nav-section, .social-section, .contact-section {
+          align-items: center;
+        }
+  
+        .social-icons {
+          margin-top: 10px;
+        }
+      }
+  
+      @media (max-width: 480px) {
+        footer {
+          bottom: 92px;
+        position: relative;
+          padding: 20px 10px;
+        }
+  
+        .footer-logo {
+          width: 100px;
+          height: 132px;
+          width: 137px;
+          left: 14px;
+        }
+  
+        .footer-text {
+          font-size: 12px;
+        }
+  
+        .nav-section a {
+          font-size: 12px;
+        }
+  
+        .social-icons a {
+          font-size: 20px;
+        }
+      }
+    </style>
+    <footer>
+      <div class="container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+          <img class="footer-logo" src="./assets/0-Photoroom.png" alt="Company Logo" />
+        </div>
+  
+        <!-- Navigation Links Section -->
+        <div class="nav-section">
+          <h3>Navigation</h3>
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Listings</a>
+          <a href="#">Contact</a>
+        </div>
+  
+        <!-- Contact Information Section -->
+        <div class="contact-section">
+          <h3>Contact Information</h3>
+          <p>Email: contact@yourcompany.com</p>
+          <p>Phone: +123 456 7890</p>
+        </div>
+  
+        <!-- Social Media Section -->
+        <div class="social-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" title="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" title="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Footer Text Section -->
+      <div class="footer-text">
+        <p>Copyright © 2024 | All Rights Reserved | Sitemap</p>
+        <p>Images shown are for representational purposes only. Amenities depicted may or may not form a part of that individual property.</p>
+      </div>
+    </footer>
+
+        <!-- Footer Section end -->
+
+</body>
+</html>
